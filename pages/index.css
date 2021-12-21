@@ -1,0 +1,34 @@
+/* vendors */
+@import url(../vendors/normalize.css);
+@import url(../fonts.css);
+/* vendors */
+
+/* blocks */
+@import url(../blocks/page/page.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/logo/logo.css);
+@import url(../blocks/content/content.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/button/button.css);
+@import url(../blocks/photos-grid/photos-grid.css);
+@import url(../blocks/heart/heart.css);
+@import url(../blocks/footer/footer.css);
+/* blocks */
+
+/* elements */
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/photos-grid/__list/photos-grid__list.css);
+@import url(../blocks/photos-grid/__card/photos-grid__card.css);
+@import url(../blocks/photos-grid/__photo/photos-grid__photo.css);
+@import url(../blocks/photos-grid/__label/photos-grid__label.css);
+@import url(../blocks/photos-grid/__location/photos-grid__location.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+/* elements */
+
+/* modifiers */
+@import url(../blocks/button/_type/button_type_add.css);
+@import url(../blocks/button/_type/button_type_edit.css);
+/* modifiers */
