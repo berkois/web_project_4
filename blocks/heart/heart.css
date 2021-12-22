@@ -1,3 +1,8 @@
 .heart {
   padding: 3px;
+  transition: opacity 0.5s ease 0s;
+}
+
+.heart:hover {
+  opacity: 0.5;
 }

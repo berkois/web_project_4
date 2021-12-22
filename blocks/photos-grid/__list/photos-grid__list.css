@@ -8,3 +8,9 @@
   list-style: none;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 362px) {
+  .photos-grid__list {
+    margin: 36px auto 0;
+  }
+}
