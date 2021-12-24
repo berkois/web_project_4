@@ -1,0 +1,8 @@
+.photos- {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 282px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}

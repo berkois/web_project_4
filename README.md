@@ -1,16 +1,24 @@
-# Project 4: Around The U.S.
+# [**Around The U.S.**](https://berkois.github.io/web_project_4)
 
-### Overview
+## About The Project
 
-* Figma
-* Images
+In this webpage, users can add and show photos from their journey, and they can also change their profile name or profile title. this page was built as a submission as part of the Web Development course of Practicum by Yandex.
 
-**Figma**
+### Built With
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+The project is built using the following tools:
 
-**Images**
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+- [JavaScript](https://www.javascript.com)
+- [Figma](https://www.figma.com/)
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+### Contact Me
 
-Have fun with JavaScript!
+Israel Berko
+
+Email: berkois@gmail.com
+
+https://github.com/berkois/web_project_4
+
+###### [back to top](#top)

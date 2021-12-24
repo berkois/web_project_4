@@ -1,0 +1,14 @@
+.popup__close-button {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  transform: rotate(45deg) scale(1);
+}
+
+@media screen and (max-width: 520px) {
+  .popup__close-button {
+    transform: rotate(45deg) scale(0.6);
+    top: -43px;
+    right: 0;
+  }
+}
