@@ -1,8 +1,4 @@
-<div align=center>
-[![logo](./images/logobackgroundblack.svg)](https://berkois.github.io/web_project_4/)
-</div>
-
-# **Around The U.S.**
+# [**Around The U.S.**](https://berkois.github.io/web_project_4)
 
 ## About The Project
 
