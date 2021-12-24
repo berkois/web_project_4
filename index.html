@@ -22,16 +22,16 @@
         <section class="profile">
           <img src="./images/profile.png" class="profile__avatar" />
           <div class="profile__info">
-            <h1 class="profile__name">
-              Jacques Cousteau&nbsp;
+            <div class="profile__name-line">
+              <h1 class="profile__name">Jacques Cousteau</h1>
               <img
-                class="button button_type_edit"
+                class="button profile__edit-button"
                 src="./images/edit_button.svg"
               />
-            </h1>
+            </div>
             <p class="profile__title">Explorer</p>
           </div>
-          <div class="button button_type_add">
+          <div class="button profile__add-button">
             <img class="button__icon" src="./images/add_button.svg" />
           </div>
         </section>
@@ -44,14 +44,14 @@
               />
               <div class="photos-grid__label">
                 <p class="photos-grid__location">Yosemite Valley</p>
-                <img class="heart" src="./images/heart.svg" />
+                <button class="heart"></button>
               </div>
             </li>
             <li class="photos-grid__card">
               <img class="photos-grid__photo" src="./images/lakelouise.png" />
               <div class="photos-grid__label">
                 <p class="photos-grid__location">Lake Louise</p>
-                <img class="heart" src="./images/heart.svg" />
+                <button class="heart"></button>
               </div>
             </li>
             <li class="photos-grid__card">
@@ -61,14 +61,14 @@
               />
               <div class="photos-grid__label">
                 <p class="photos-grid__location">Bald Mountains</p>
-                <img class="heart" src="./images/heart.svg" />
+                <button class="heart"></button>
               </div>
             </li>
             <li class="photos-grid__card">
               <img class="photos-grid__photo" src="./images/latemar.png" />
               <div class="photos-grid__label">
                 <p class="photos-grid__location">Latemar</p>
-                <img class="heart" src="./images/heart.svg" />
+                <button class="heart"></button>
               </div>
             </li>
             <li class="photos-grid__card">
@@ -78,14 +78,14 @@
               />
               <div class="photos-grid__label">
                 <p class="photos-grid__location">Vanoise National Park</p>
-                <img class="heart" src="./images/heart.svg" />
+                <button class="heart"></button>
               </div>
             </li>
             <li class="photos-grid__card">
               <img class="photos-grid__photo" src="./images/lagodibraies.png" />
               <div class="photos-grid__label">
                 <p class="photos-grid__location">Lago di Braies</p>
-                <img class="heart" src="./images/heart.svg" />
+                <button class="heart"></button>
               </div>
             </li>
           </ul>
@@ -94,6 +94,33 @@
       <footer class="footer">
         <p class="footer__copyright">&copy; 2021 Around The U.S.</p>
       </footer>
+      <section class="popup">
+        <div class="popup__container">
+          <img
+            src="./images/closeicon.svg"
+            class="popup__close-button button"
+          />
+          <h2 class="popup__header">Edit profile</h2>
+          <form class="popup__form" name="edit">
+            <input
+              type="text"
+              class="popup__input popup__input_type_name"
+              value="Name"
+              name="profile-name"
+            />
+            <input
+              type="text"
+              class="popup__input popup__input_type_job"
+              value="About me"
+              name="profile-title"
+            />
+            <button type="submit" class="popup__save-button" value="Save">
+              Save
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>

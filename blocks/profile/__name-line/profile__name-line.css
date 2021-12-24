@@ -1,0 +1,7 @@
+.profile__name-line {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 18px;
+  max-width: 100%;
+}

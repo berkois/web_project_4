@@ -1,8 +1,19 @@
 .heart {
+  all: unset;
+  width: 21px;
+  height: 21px;
+  box-sizing: border-box;
   padding: 3px;
   transition: opacity 0.5s ease 0s;
+  background-image: url(../../images/heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .heart:hover {
   opacity: 0.5;
+}
+
+.heart_active {
+  background-image: url(../../images/blackheart.svg);
 }
