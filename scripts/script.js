@@ -11,16 +11,20 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   currentName.textContent = nameInput.value;
   currentJob.textContent = jobInput.value;
-  popup.classList.remove("popup_opened");
+  popup.classList.toggle("popup_opened");
   formElement.reset();
 }
 
 function togglePopup(evt) {
   popup.classList.toggle("popup_opened");
+}
+
+function fillDefaultFormFields(evt) {
   nameInput.value = currentName.textContent;
   jobInput.value = currentJob.textContent;
 }
 
 formElement.addEventListener("submit", handleProfileFormSubmit);
 editButton.addEventListener("click", togglePopup);
+editButton.addEventListener("click", fillDefaultFormFields);
 closeButton.addEventListener("click", togglePopup);
