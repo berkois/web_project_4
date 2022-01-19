@@ -1,0 +1,11 @@
+.photos-grid__trash {
+  background-image: url(../../../images/trash.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 18px;
+  height: 19.3px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}

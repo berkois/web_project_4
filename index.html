@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Israel Berko" />
-    <meta
-      name="description"
-      content="Submission for project number 4 in web developement course by Practicum Yandex"
-    />
+    <meta name="description" content="Submission for project number 4 in web developement course by Practicum Yandex" />
     <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" href="./images/icon.ico" />
     <title>Around The U.S.</title>
@@ -20,154 +17,53 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img
-            src="./images/profile.png"
-            class="profile__avatar"
-            alt="A profile photo of Jacques Cousteau"
-          />
+          <img src="./images/profile.png" class="profile__avatar" alt="A profile photo of Jacques Cousteau" />
           <div class="profile__info">
             <div class="profile__name-line">
               <h1 class="profile__name">Jacques Cousteau</h1>
-              <button
-                class="button profile__edit-button"
-                type="button"
-                aria-label="edit-button"
-              ></button>
+              <button class="button profile__edit-button" type="button" aria-label="edit-button"></button>
             </div>
             <p class="profile__title">Explorer</p>
           </div>
-          <button
-            class="button profile__add-button"
-            type="button"
-            aria-label="add-button"
-          ></button>
+          <button class="button profile__add-button" type="button" aria-label="add-button"></button>
         </section>
         <section class="photos-grid">
           <ul class="photos-grid__list">
-            <li class="photos-grid__card">
-              <img
-                class="photos-grid__photo"
-                src="./images/yosemitevalley.png"
-                alt="Yosemite Valley"
-              />
-              <div class="photos-grid__label">
-                <p class="photos-grid__location">Yosemite Valley</p>
-                <button
-                  class="heart"
-                  type="button"
-                  aria-label="like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="photos-grid__card">
-              <img
-                class="photos-grid__photo"
-                src="./images/lakelouise.png"
-                alt="Lake Louise"
-              />
-              <div class="photos-grid__label">
-                <p class="photos-grid__location">Lake Louise</p>
-                <button
-                  class="heart"
-                  type="button"
-                  aria-label="like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="photos-grid__card">
-              <img
-                class="photos-grid__photo"
-                src="./images/baldmountains.png"
-                alt="Bald Mountains"
-              />
-              <div class="photos-grid__label">
-                <p class="photos-grid__location">Bald Mountains</p>
-                <button
-                  class="heart"
-                  type="button"
-                  aria-label="like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="photos-grid__card">
-              <img
-                class="photos-grid__photo"
-                src="./images/latemar.png"
-                alt="Latemar"
-              />
-              <div class="photos-grid__label">
-                <p class="photos-grid__location">Latemar</p>
-                <button
-                  class="heart"
-                  type="button"
-                  aria-label="like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="photos-grid__card">
-              <img
-                class="photos-grid__photo"
-                src="./images/vanoisenational.png"
-                alt="Vanoise National Park"
-              />
-              <div class="photos-grid__label">
-                <p class="photos-grid__location">Vanoise National Park</p>
-                <button
-                  class="heart"
-                  type="button"
-                  aria-label="like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="photos-grid__card">
-              <img
-                class="photos-grid__photo"
-                src="./images/lagodibraies.png"
-                alt="Lago di Braies"
-              />
-              <div class="photos-grid__label">
-                <p class="photos-grid__location">Lago di Braies</p>
-                <button
-                  class="heart"
-                  type="button"
-                  aria-label="like-button"
-                ></button>
-              </div>
-            </li>
+            <template id="card-template">
+              <li class="photos-grid__card">
+                <img class="photos-grid__photo" src="" alt="" />
+                <button class="photos-grid__trash button" type="button" aria-label="delete-button"></button>
+                <div class="photos-grid__label">
+                  <p class="photos-grid__location"></p>
+                  <button class="heart" type="button" aria-label="like-button"></button>
+                </div>
+              </li>
+            </template>
           </ul>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2021 Around The U.S.</p>
       </footer>
-      <section class="popup">
+      <section class="popup popup_type_edit-profile">
         <div class="popup__container">
-          <button
-            class="popup__close-button button"
-            type="button"
-            aria-label="close-button"
-          ></button>
+          <button class="popup__close-button button" type="button" aria-label="close-button"></button>
           <h2 class="popup__header">Edit profile</h2>
           <form class="popup__form" name="edit">
-            <input
-              type="text"
-              class="popup__input popup__input_type_name"
-              value="Name"
-              name="profile-name"
-            />
-            <input
-              type="text"
-              class="popup__input popup__input_type_job"
-              value="About me"
-              name="profile-title"
-            />
-            <button
-              type="submit"
-              class="button popup__save-button"
-              value="Save"
-            >
-              Save
-            </button>
+            <input type="text" class="popup__input popup__input_type_name" value="Name" name="profile-name" />
+            <input type="text" class="popup__input popup__input_type_job" value="About me" name="profile-title" />
+            <button type="submit" class="button popup__save-button" value="Save">Save</button>
+          </form>
+        </div>
+      </section>
+      <section class="popup popup_type_add-card">
+        <div class="popup__container">
+          <button class="popup__close-button button" type="button" aria-label="close-button"></button>
+          <h2 class="popup__header">New place</h2>
+          <form class="popup__form" name="add-card">
+            <input type="text" class="popup__input popup__input_type_place" value="Title" name="place-title" />
+            <input type="text" class="popup__input popup__input_type_img-src" value="Image link" name="image-source" />
+            <button type="submit" class="button popup__save-button" value="Create">Create</button>
           </form>
         </div>
       </section>
