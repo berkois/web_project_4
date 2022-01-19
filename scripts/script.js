@@ -105,6 +105,7 @@ function handleAddCardSubmit(evt) {
   const newCard = getCard(newCardInfo);
   cardsContainer.prepend(newCard);
   popupAddCard.classList.toggle("popup_opened");
+  formAddCard.reset();
 }
 
 formAddCard.addEventListener("submit", handleAddCardSubmit);
