@@ -2,13 +2,12 @@
   all: unset;
   width: 21px;
   height: 21px;
-  box-sizing: border-box;
   padding: 3px;
   transition: opacity 0.5s ease 0s;
   background-image: url(../../images/heart.svg);
   background-repeat: no-repeat;
   background-position: center;
-  transition: opacity 0.3s, background-image 0.8s ease 0s;
+  transition: background-image 0.5s, opacity 0.5s ease 0s;
 }
 
 .heart:hover {
