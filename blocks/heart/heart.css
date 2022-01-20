@@ -3,7 +3,6 @@
   width: 21px;
   height: 21px;
   padding: 3px;
-  transition: opacity 0.5s ease 0s;
   background-image: url(../../images/heart.svg);
   background-repeat: no-repeat;
   background-position: center;
