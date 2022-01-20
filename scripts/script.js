@@ -52,13 +52,22 @@ function removeCard() {
   });
 }
 
+// like function
+function like() {
+  cardLikeButtons.forEach((likeButton) => {
+    likeButton.addEventListener("click", function (evt) {
+      const likeTarget = evt.target;
+      likeTarget.classList.toggle("heart_active");
+    });
+  });
+}
+
 // adding new card
 function getCard(cardInfo) {
   const cardElement = cardTemplate.querySelector(".photos-grid__card").cloneNode(true);
   cardElement.querySelector(".photos-grid__photo").src = cardInfo.link;
   cardElement.querySelector(".photos-grid__photo").alt = cardInfo.name;
   cardElement.querySelector(".photos-grid__location").textContent = cardInfo.name;
-  cards.push(cardElement);
 
   const cardDeleteButton = cardElement.querySelector(".photos-grid__trash");
   cardDeleteButtons.push(cardDeleteButton);
@@ -66,7 +75,10 @@ function getCard(cardInfo) {
 
   const cardLikeButton = cardElement.querySelector(".heart");
   cardLikeButtons.push(cardLikeButton);
+  like();
+
   cardsContainer.prepend(cardElement);
+  cards.push(cardElement);
 }
 
 // initial cards info
