@@ -44,6 +44,7 @@ function getCard(cardInfo) {
   cardElement.querySelector(".photos-grid__photo").src = cardInfo.link;
   cardElement.querySelector(".photos-grid__photo").alt = cardInfo.name;
   cardElement.querySelector(".photos-grid__location").textContent = cardInfo.name;
+  cardsContainer.prepend(cardElement);
   return cardElement;
 }
 
@@ -81,9 +82,6 @@ const initialCard = initialCards.map((card) => {
   return initialCardItem;
 });
 
-// adding initial cards to the page
-cardsContainer.prepend(...initialCard);
-
 // setting popup for adding place card
 const popupAddCard = document.querySelector(".popup_type_add-card");
 const formAddCard = popupAddCard.querySelector(".popup__form");
@@ -102,8 +100,7 @@ function handleAddCardSubmit(evt) {
     name: placeInput.value,
     link: imgSrcInput.value,
   };
-  const newCard = getCard(newCardInfo);
-  cardsContainer.prepend(newCard);
+  getCard(newCardInfo);
   popupAddCard.classList.toggle("popup_opened");
   formAddCard.reset();
 }
