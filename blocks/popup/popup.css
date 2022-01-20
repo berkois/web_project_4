@@ -11,6 +11,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   transition: visibility 0.5s, opacity 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup_opened {

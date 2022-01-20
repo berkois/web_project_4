@@ -61,6 +61,8 @@ function getCard(cardInfo) {
   cardElement.querySelector(".photos-grid__photo").src = cardInfo.link;
   cardElement.querySelector(".photos-grid__photo").alt = cardInfo.name;
   cardElement.querySelector(".photos-grid__location").textContent = cardInfo.name;
+  cardElement.querySelector(".photos-grid__popup-image").src = cardInfo.link;
+  cardElement.querySelector(".photos-grid__popup-text").textContent = cardInfo.name;
 
   // add event listener to delete button of the newly added place card
   const cardDeleteButton = cardElement.querySelector(".photos-grid__trash");
@@ -77,7 +79,23 @@ function getCard(cardInfo) {
     likeTarget.classList.toggle("heart_active");
   });
 
-  // adding the new place card to the page
+  // add event listener to the picture of the newly added place card
+  const cardPicture = cardElement.querySelector(".photos-grid__photo");
+  cardPicture.addEventListener("click", function (evt) {
+    const pictureToPop = evt.target;
+    const popupPicture = pictureToPop.nextElementSibling;
+    togglePopup(popupPicture);
+  });
+
+  // add event listener to the close button of the popup picture of the newly added place card
+  const popupPictureCloseButton = cardElement.querySelector(".popup__close-button");
+  popupPictureCloseButton.addEventListener("click", function (evt) {
+    const popupClose = evt.target;
+    const popupToClose = popupClose.closest(".photos-grid__popup");
+    togglePopup(popupToClose);
+  });
+
+  // add the new place card to the page
   cardsContainer.prepend(cardElement);
 }
 
@@ -130,7 +148,7 @@ function handleAddCardSubmit(evt) {
   formAddCard.reset();
 }
 
-// handling all the actions for submitted add-card form
+// handling all the actions for cancelling add-card form
 function handleAddCardCancel() {
   togglePopup(popupAddCard);
   formAddCard.reset();

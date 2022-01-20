@@ -1,0 +1,9 @@
+.photos-grid__popup-text {
+  margin: 0;
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.25;
+}
