@@ -8,6 +8,7 @@
   background-image: url(../../images/heart.svg);
   background-repeat: no-repeat;
   background-position: center;
+  transition: opacity 0.3s, background-image 0.8s ease 0s;
 }
 
 .heart:hover {
