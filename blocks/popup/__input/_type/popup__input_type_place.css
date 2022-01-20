@@ -1,3 +1,7 @@
 .popup__input_type_place {
+  color: #000000;
+}
+
+.popup__input_type_place::placeholder {
   color: #c4c4c4;
 }
