@@ -37,15 +37,36 @@ closeButtonEditProfile.addEventListener("click", () => togglePopup(popupEditProf
 // setting the cards container and template for card elements
 const cardsContainer = document.querySelector(".photos-grid__list");
 const cardTemplate = document.querySelector("#card-template").content;
+const cards = [];
+const cardDeleteButtons = [];
+const cardLikeButtons = [];
 
-// declaring new card
+// removing card
+function removeCard() {
+  cardDeleteButtons.forEach((deleteButton) => {
+    deleteButton.addEventListener("click", function (evt) {
+      const deleteTarget = evt.target;
+      const cardToDelete = deleteTarget.closest(".photos-grid__card");
+      cardToDelete.remove();
+    });
+  });
+}
+
+// adding new card
 function getCard(cardInfo) {
   const cardElement = cardTemplate.querySelector(".photos-grid__card").cloneNode(true);
   cardElement.querySelector(".photos-grid__photo").src = cardInfo.link;
   cardElement.querySelector(".photos-grid__photo").alt = cardInfo.name;
   cardElement.querySelector(".photos-grid__location").textContent = cardInfo.name;
+  cards.push(cardElement);
+
+  const cardDeleteButton = cardElement.querySelector(".photos-grid__trash");
+  cardDeleteButtons.push(cardDeleteButton);
+  removeCard();
+
+  const cardLikeButton = cardElement.querySelector(".heart");
+  cardLikeButtons.push(cardLikeButton);
   cardsContainer.prepend(cardElement);
-  return cardElement;
 }
 
 // initial cards info
