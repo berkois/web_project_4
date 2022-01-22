@@ -66,9 +66,6 @@ const popupCardCloseButton = popupCard.querySelector(".popup__close-button");
 // add event listener to the close button of the popup picture of the newly added place card
 popupCardCloseButton.addEventListener("click", function (evt) {
   closePopup(popupCard);
-  popupCardPicture.src = " ";
-  popupCardPicture.alt = " ";
-  popupCardText.textContent = " ";
 });
 
 // adding new card
