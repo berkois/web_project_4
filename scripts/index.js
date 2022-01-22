@@ -108,52 +108,11 @@ function getCard(cardInfo) {
   return cardElement;
 }
 
-// Each function is supposed to perform just one task.
-// In this case, it needs to create a card and set up event listeners.
-// This function should also return a card element (return card) but not add it to the markup.
-// To add a card to the markup, you need to create a new function like renderCard()
-// that will call a function that creates cards (getCard()),
-// and its output will be added to the markup with the help of the prepend() function.
-// It can be used both in the methods for uploading new cards and for adding a user card.
-
 function renderCard(cardInfo) {
   const placeCard = getCard(cardInfo);
   // add the new place card to the page
   cardsContainer.prepend(placeCard);
 }
-
-// initial cards info
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
-
-// declaring cards from initial cards info
-initialCards.forEach((card) => {
-  renderCard(card);
-});
 
 // handling all the actions for submitted add-card form
 function handleAddCardSubmit(evt) {
@@ -180,3 +139,8 @@ function handleAddCardCancel() {
 addButton.addEventListener("click", () => openPopup(popupAddCard));
 formAddCard.addEventListener("submit", handleAddCardSubmit);
 closeButtonAddCard.addEventListener("click", () => handleAddCardCancel());
+
+// declaring cards from initial cards info
+initialCards.forEach((card) => {
+  renderCard(card);
+});
