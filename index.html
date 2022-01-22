@@ -28,25 +28,7 @@
           <button class="button profile__add-button" type="button" aria-label="add-button"></button>
         </section>
         <section class="photos-grid">
-          <ul class="photos-grid__list">
-            <template id="card-template">
-              <li class="photos-grid__card">
-                <img class="photos-grid__photo" src=" " alt="" />
-                <div class="photos-grid__popup popup">
-                  <div class="photos-grid__popup-container">
-                    <img class="photos-grid__popup-image" src=" " alt="" />
-                    <button class="popup__close-button button" type="button" aria-label="close-button"></button>
-                    <p class="photos-grid__popup-text"></p>
-                  </div>
-                </div>
-                <button class="photos-grid__trash button" type="button" aria-label="delete-button"></button>
-                <div class="photos-grid__label">
-                  <p class="photos-grid__location"></p>
-                  <button class="heart" type="button" aria-label="like-button"></button>
-                </div>
-              </li>
-            </template>
-          </ul>
+          <ul class="photos-grid__list"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -74,7 +56,24 @@
           </form>
         </div>
       </section>
+      <div class="photos-grid__popup popup">
+        <div class="photos-grid__popup-container">
+          <img class="photos-grid__popup-image" src=" " alt="" />
+          <button class="popup__close-button button" type="button" aria-label="close-button"></button>
+          <p class="photos-grid__popup-text"></p>
+        </div>
+      </div>
+      <template id="card-template">
+        <li class="photos-grid__card">
+          <img class="photos-grid__photo" src=" " alt="" />
+          <button class="photos-grid__trash button" type="button" aria-label="delete-button"></button>
+          <div class="photos-grid__label">
+            <p class="photos-grid__location"></p>
+            <button class="heart" type="button" aria-label="like-button"></button>
+          </div>
+        </li>
+      </template>
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
