@@ -58,9 +58,9 @@ const imgSrcInput = formAddCard.querySelector(".popup__input_type_img-src");
 // setting the cards container and template for card elements
 const cardsContainer = document.querySelector(".photos-grid__list");
 const cardTemplate = document.querySelector("#card-template").content;
-const popupCard = document.querySelector(".photos-grid__popup");
-const popupCardPicture = popupCard.querySelector(".photos-grid__popup-image");
-const popupCardText = popupCard.querySelector(".photos-grid__popup-text");
+const popupCard = document.querySelector(".picture-popup");
+const popupCardPicture = popupCard.querySelector(".picture-popup__popup-image");
+const popupCardText = popupCard.querySelector(".picture-popup__popup-text");
 const popupCardCloseButton = popupCard.querySelector(".popup__close-button");
 
 // add event listener to the close button of the popup picture of the newly added place card

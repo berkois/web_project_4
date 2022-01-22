@@ -30,9 +30,6 @@
 @import url(../blocks/photos-grid/__trash/photos-grid__trash.css);
 @import url(../blocks/photos-grid/__label/photos-grid__label.css);
 @import url(../blocks/photos-grid/__location/photos-grid__location.css);
-@import url(../blocks/photos-grid/__popup-container/photos-grid__popup-container.css);
-@import url(../blocks/photos-grid/__popup-image/photos-grid__popup-image.css);
-@import url(../blocks/photos-grid/__popup-text/photos-grid__popup-text.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__header/popup__header.css);
@@ -40,6 +37,9 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/picture-popup/__popup-container/picture-popup__popup-container.css);
+@import url(../blocks/picture-popup/__popup-image/picture-popup__popup-image.css);
+@import url(../blocks/picture-popup/__popup-text/picture-popup__popup-text.css);
 /* elements */
 
 /* modifiers */
