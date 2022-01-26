@@ -38,9 +38,15 @@
         <div class="popup__container">
           <button class="popup__close-button button" type="button" aria-label="close-button"></button>
           <h2 class="popup__header">Edit profile</h2>
-          <form class="popup__form" name="edit">
-            <input type="text" class="popup__input popup__input_type_name" value="Name" name="profile-name" />
-            <input type="text" class="popup__input popup__input_type_job" value="About me" name="profile-title" />
+          <form class="popup__form" name="edit" novalidate>
+            <label class="popup__field">
+              <input type="text" class="popup__input popup__input_type_name" id="name-input" value="Name" name="profile-name" minlength="2" maxlength="40" required />
+              <span class="popup__input-error name-input-error">show some error message</span>
+            </label>
+            <label class="popup__field">
+              <input type="text" class="popup__input popup__input_type_job" id="title-input" value="About me" name="profile-title" minlength="2" maxlength="200" required />
+              <span class="popup__input-error title-input-error">show some error message</span>
+            </label>
             <button type="submit" class="button popup__save-button" value="Save">Save</button>
           </form>
         </div>
@@ -49,7 +55,7 @@
         <div class="popup__container">
           <button class="popup__close-button button" type="button" aria-label="close-button"></button>
           <h2 class="popup__header">New place</h2>
-          <form class="popup__form" name="add-card">
+          <form class="popup__form" name="add-card" novalidate>
             <input type="text" class="popup__input popup__input_type_place" value="" placeholder="Title" name="place-title" />
             <input type="text" class="popup__input popup__input_type_img-src" value="" placeholder="Image link" name="image-source" />
             <button type="submit" class="button popup__save-button" value="Create">Create</button>

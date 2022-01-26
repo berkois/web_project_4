@@ -4,6 +4,7 @@
   row-gap: 30px;
   margin: 50px 0 0;
   height: 180px;
+  position: relative;
 }
 
 @media screen and (max-width: 362px) {
