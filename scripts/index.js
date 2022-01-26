@@ -17,11 +17,28 @@ function openPopup(popup) {
   popup.classList.add("popup_opened");
   // enable form validity as the popup form prompts
   enableValidation();
+  popup.addEventListener("click", closePopupByClickOverlay);
+  document.addEventListener("keydown", closePopupByEsc);
 }
 
 // removing the pop-ups
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener("click", closePopupByClickOverlay);
+  document.removeEventListener("keydown", closePopupByEsc);
+}
+
+function closePopupByClickOverlay(evt) {
+  if (evt.target == evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
+}
+
+function closePopupByEsc(evt) {
+  const activePopup = document.querySelector(".popup_opened");
+  if (evt.key === "Escape") {
+    closePopup(activePopup);
+  }
 }
 
 // editing the proile from input
