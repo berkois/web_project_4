@@ -45,7 +45,6 @@ const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
 
 // a function to add event listener for every for input field in the page
 const setEventListeners = (formElement, config) => {
-  console.log(config);
   // setting an array of all input fields of a given form
   const inputList = [...formElement.querySelectorAll(config.inputSelector)];
 
