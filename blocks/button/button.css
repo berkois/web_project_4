@@ -3,7 +3,7 @@
   transition: opacity 0.5s ease 0s;
 }
 
-.button:hover {
+.button:hover:enabled {
   opacity: 0.6;
   cursor: pointer;
 }
