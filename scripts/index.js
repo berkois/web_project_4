@@ -71,6 +71,9 @@ const addButton = document.querySelector(".profile__add-button");
 const closeButtonAddCard = popupAddCard.querySelector(".popup__close-button");
 const placeInput = formAddCard.querySelector(".popup__input_type_place");
 const imageUrlInput = formAddCard.querySelector(".popup__input_type_img-src");
+const formAddSubmitButton = formAddCard.querySelector(".popup__save-button");
+const formAddInputList = [...formAddCard.querySelectorAll(".popup__input")];
+const formButtonInactiveClass = "popup__save-button_inactive";
 
 // setting the cards container and template for card elements
 const cardsContainer = document.querySelector(".photos-grid__list");
@@ -151,13 +154,13 @@ function handleAddCardCancel() {
   formAddCard.reset();
 }
 
-function openPopupWithValidation(popup) {
-  enableValidation();
+function openPopupWithValidation(inputList, buttonElement, inactiveButtonClass, popup) {
+  toggleButtonState(inputList, buttonElement, inactiveButtonClass);
   openPopup(popup);
 }
 
 // event listener for add-card button
-addButton.addEventListener("click", () => openPopupWithValidation(popupAddCard));
+addButton.addEventListener("click", () => openPopupWithValidation(formAddInputList, formAddSubmitButton, formButtonInactiveClass, popupAddCard));
 formAddCard.addEventListener("submit", handleAddCardSubmit);
 closeButtonAddCard.addEventListener("click", () => handleAddCardCancel());
 
