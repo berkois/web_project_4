@@ -15,7 +15,7 @@ const jobInput = formEditProfile.querySelector(".popup__input_type_job");
 // showing the pop-ups
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  // enable the validity as the page loads
+  // enable form validity as the popup form prompts
   enableValidation();
 }
 
