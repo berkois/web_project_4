@@ -19,6 +19,13 @@ function openPopup(popup) {
   document.addEventListener("keydown", closePopupByEsc);
 }
 
+// get default values from current info and open popup
+function openPopupWithDefault(popup) {
+  nameInput.value = currentName.textContent;
+  jobInput.value = currentJob.textContent;
+  openPopup(popup);
+}
+
 // removing the pop-ups
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
@@ -48,16 +55,9 @@ function handleProfileFormSubmit(evt) {
   formEditProfile.reset();
 }
 
-// get default values from current info
-function fillDefaultFormFields(evt) {
-  nameInput.value = currentName.textContent;
-  jobInput.value = currentJob.textContent;
-}
-
 // assigning functions to events for edit-form functionalities
 formEditProfile.addEventListener("submit", handleProfileFormSubmit);
-editButton.addEventListener("click", () => openPopup(popupEditProfile));
-editButton.addEventListener("click", fillDefaultFormFields);
+editButton.addEventListener("click", () => openPopupWithDefault(popupEditProfile));
 closeButtonEditProfile.addEventListener("click", () => closePopup(popupEditProfile));
 
 /* -------------------------------------------------------------------------- */
@@ -70,7 +70,7 @@ const formAddCard = popupAddCard.querySelector(".popup__form");
 const addButton = document.querySelector(".profile__add-button");
 const closeButtonAddCard = popupAddCard.querySelector(".popup__close-button");
 const placeInput = formAddCard.querySelector(".popup__input_type_place");
-const imgSrcInput = formAddCard.querySelector(".popup__input_type_img-src");
+const imageUrlInput = formAddCard.querySelector(".popup__input_type_img-src");
 
 // setting the cards container and template for card elements
 const cardsContainer = document.querySelector(".photos-grid__list");
@@ -86,12 +86,14 @@ popupCardCloseButton.addEventListener("click", function (evt) {
 });
 
 // adding new card
-function getCard(cardInfo) {
+function generateCard(cardInfo) {
   // cloning new card from template and adding the info from input
   const cardElement = cardTemplate.querySelector(".photos-grid__card").cloneNode(true);
-  cardElement.querySelector(".photos-grid__photo").src = cardInfo.link;
-  cardElement.querySelector(".photos-grid__photo").alt = cardInfo.name;
-  cardElement.querySelector(".photos-grid__location").textContent = cardInfo.name;
+  const cardPhoto = cardElement.querySelector(".photos-grid__photo");
+  const cardText = cardElement.querySelector(".photos-grid__location");
+  cardPhoto.src = cardInfo.link;
+  cardPhoto.alt = cardInfo.name;
+  cardText.textContent = cardInfo.name;
 
   // add event listener to delete button of the newly added place card
   const cardDeleteButton = cardElement.querySelector(".photos-grid__trash");
@@ -109,13 +111,13 @@ function getCard(cardInfo) {
   });
 
   // add event listener to the picture of the newly added place card
-  cardElement.querySelector(".photos-grid__photo").addEventListener("click", function (evt) {
-    const pictureToPop = evt.target;
-    const dataToPop = pictureToPop.closest(".photos-grid__card");
-    const textToPop = dataToPop.querySelector(".photos-grid__location");
-    popupCardPicture.src = pictureToPop.src;
-    popupCardPicture.alt = pictureToPop.alt;
-    popupCardText.textContent = textToPop.textContent;
+  cardPhoto.addEventListener("click", function (evt) {
+    const pictureForPreviewPopup = evt.target;
+    const dataForPreviewPopup = pictureForPreviewPopup.closest(".photos-grid__card");
+    const textForPreviewPopup = dataForPreviewPopup.querySelector(".photos-grid__location");
+    popupCardPicture.src = pictureForPreviewPopup.src;
+    popupCardPicture.alt = pictureForPreviewPopup.alt;
+    popupCardText.textContent = textForPreviewPopup.textContent;
     openPopup(popupCard);
   });
 
@@ -123,7 +125,7 @@ function getCard(cardInfo) {
 }
 
 function renderCard(cardInfo) {
-  const placeCard = getCard(cardInfo);
+  const placeCard = generateCard(cardInfo);
   // add the new place card to the page
   cardsContainer.prepend(placeCard);
 }
@@ -134,7 +136,7 @@ function handleAddCardSubmit(evt) {
 
   const newCardInfo = {
     name: placeInput.value,
-    link: imgSrcInput.value,
+    link: imageUrlInput.value,
   };
   renderCard(newCardInfo);
 
@@ -149,12 +151,15 @@ function handleAddCardCancel() {
   formAddCard.reset();
 }
 
+function openPopupWithValidation(popup) {
+  enableValidation();
+  openPopup(popup);
+}
+
 // event listener for add-card button
-addButton.addEventListener("click", () => openPopup(popupAddCard));
+addButton.addEventListener("click", () => openPopupWithValidation(popupAddCard));
 formAddCard.addEventListener("submit", handleAddCardSubmit);
 closeButtonAddCard.addEventListener("click", () => handleAddCardCancel());
 
 // declaring cards from initial cards info
-initialCards.forEach((card) => {
-  renderCard(card);
-});
+initialCards.forEach(renderCard);

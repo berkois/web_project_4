@@ -29,9 +29,7 @@ const checkInputValidity = (formElement, inputElement) => {
 
 // checking the validity of entire form
 const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
+  return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
 // toggling the submit button active of inactive, to be used based on form validity
@@ -76,4 +74,11 @@ const enableValidation = () => {
   });
 };
 
-enableValidation();
+enableValidation({
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_disabled",
+  inputErrorClass: "popup__input_state_error",
+  errorClass: "popup__input-error_active",
+});
