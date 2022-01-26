@@ -3,11 +3,11 @@
 /* -------------------------------------------------------------------------- */
 
 // prompting error message with its style per form and input field
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("popup__input_state_error");
+  inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__input-error_active");
+  errorElement.classList.add(config.errorClass);
 };
 
 // removing the error message
@@ -21,7 +21,7 @@ const hideInputError = (formElement, inputElement, config) => {
 // checking the validity of specific input
 const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, config);
   } else {
     hideInputError(formElement, inputElement, config);
   }
