@@ -15,6 +15,15 @@ export class FormValidator {
     this._setEventListeners();
   }
 
+  resetValidation() {
+    this._inputList = [...this._form.querySelectorAll(this._config.inputSelector)];
+    this._inputList.forEach((inputElement) => {
+      inputElement.value = "";
+      this._hideInputError(inputElement);
+      this._toggleButtonState();
+    });
+  }
+
   // prompting error message with its style per form and input field
   _showInputError(inputElement) {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);

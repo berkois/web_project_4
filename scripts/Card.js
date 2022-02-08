@@ -9,7 +9,7 @@ export class Card {
 
   // cloning new card from template and adding the info from input
   _getCardData() {
-    const cardElement = document.querySelector(this._template).content.querySelector(".photos-grid__card").cloneNode(true);
+    const cardElement = this._template.content.querySelector(".photos-grid__card").cloneNode(true);
     return cardElement;
   }
 
