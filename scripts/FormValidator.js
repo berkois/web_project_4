@@ -15,6 +15,7 @@ export class FormValidator {
     this._setEventListeners();
   }
 
+  // add the ability to reset the validation between sessions
   resetValidation() {
     this._inputList = [...this._form.querySelectorAll(this._config.inputSelector)];
     this._inputList.forEach((inputElement) => {
