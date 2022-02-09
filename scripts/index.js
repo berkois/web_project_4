@@ -20,9 +20,7 @@ const addCardButton = document.querySelector(".profile__add-button");
 const closeButtonAddCard = popupAddCard.querySelector(".popup__close-button");
 const placeInput = formAddCard.querySelector(".popup__input_type_place");
 const imageUrlInput = formAddCard.querySelector(".popup__input_type_img-src");
-const anyPopup = document.querySelectorAll(".popup");
-
-// setting the configuration for all the forms in the page
+const popupsList = document.querySelectorAll(".popup");
 const formConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -33,24 +31,22 @@ const formConfig = {
 };
 
 // assigning event listener for closure actions for all the popups in the page
-anyPopup.forEach((popup) => {
-  popup.addEventListener("keydown", closePopupByEsc);
-  popup.addEventListener("click", closePopupByClickOverlay);
+popupsList.forEach((popup) => {
   popup.querySelector(".popup__close-button").addEventListener("click", () => {
     closePopup(popup);
   });
 });
 
 // make the default values of a form same as the current output
-const defaultFormValues = () => {
+const setProfileFormValues = () => {
   nameInput.value = currentName.textContent;
   jobInput.value = currentJob.textContent;
 };
 
 // handle edit-profile form modal open
 const openEditProfileForm = () => {
-  resetFormValidation(validateProfileForm);
-  defaultFormValues();
+  editProfileFormValidator.resetValidation();
+  setProfileFormValues();
   openPopup(popupEditProfile);
 };
 
@@ -70,7 +66,7 @@ closeButtonEditProfile.addEventListener("click", closePopup(popupEditProfile));
 
 // handling add-card form modal open
 const openAddCardForm = () => {
-  resetFormValidation(validateAddForm);
+  addFormValidator.resetValidation();
   openPopup(popupAddCard);
 };
 
@@ -87,9 +83,9 @@ const cardTemplate = document.getElementById("card-template");
 // rendering new cards
 const renderCard = (cardInfo) => {
   const placeCard = new Card(cardInfo.name, cardInfo.link, cardTemplate);
-  const placeCardReady = placeCard.generateCard();
+  const placeCardElement = placeCard.generateCard();
   // add the new place card to the page
-  cardsContainer.prepend(placeCardReady);
+  cardsContainer.prepend(placeCardElement);
 };
 
 // handling all the actions for submitted add-card form
@@ -114,15 +110,10 @@ closeButtonAddCard.addEventListener("click", () => handleAddCardCancel());
 // rendering the initial given cards
 initialCards.forEach(renderCard);
 
-// reseting form validation
-const resetFormValidation = (validationFormType) => {
-  validationFormType.resetValidation();
-};
-
 // enabling validation for add-card form
-const validateAddForm = new FormValidator(formConfig, formAddCard);
-validateAddForm.enableValidation();
+const addFormValidator = new FormValidator(formConfig, formAddCard);
+addFormValidator.enableValidation();
 
 // enabling validation for edit-profile form
-const validateProfileForm = new FormValidator(formConfig, formEditProfile);
-validateProfileForm.enableValidation();
+const editProfileFormValidator = new FormValidator(formConfig, formEditProfile);
+editProfileFormValidator.enableValidation();

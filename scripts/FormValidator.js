@@ -9,6 +9,12 @@ export class FormValidator {
   }
 
   enableValidation() {
+    // setting an array of all input fields of a given form
+    this._inputList = [...this._form.querySelectorAll(this._config.inputSelector)];
+
+    // declaring the submit button of a given form
+    this._buttonElement = this._form.querySelector(this._config.submitButtonSelector);
+
     this._form.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
@@ -17,7 +23,6 @@ export class FormValidator {
 
   // add the ability to reset the validation between sessions
   resetValidation() {
-    this._inputList = [...this._form.querySelectorAll(this._config.inputSelector)];
     this._inputList.forEach((inputElement) => {
       inputElement.value = "";
       this._hideInputError(inputElement);
@@ -68,12 +73,6 @@ export class FormValidator {
 
   // a function to add event listener for every for input field in the page
   _setEventListeners() {
-    // setting an array of all input fields of a given form
-    this._inputList = [...this._form.querySelectorAll(this._config.inputSelector)];
-
-    // declaring the submit button of a given form
-    this._buttonElement = this._form.querySelector(this._config.submitButtonSelector);
-
     // setting the initial state of the submit button (will be set to inactive)
     this._toggleButtonState();
 

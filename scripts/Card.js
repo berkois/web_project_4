@@ -1,4 +1,12 @@
+/* -------------------------------------------------------------------------- */
+/*                               Card Generation                              */
+/* -------------------------------------------------------------------------- */
+
 import { openPopup } from "./utils.js";
+
+const popupCard = document.querySelector(".picture-popup");
+const popupCardPicture = popupCard.querySelector(".picture-popup__popup-image");
+const popupCardText = popupCard.querySelector(".picture-popup__popup-text");
 
 export class Card {
   constructor(text, link, template) {
@@ -16,37 +24,37 @@ export class Card {
   generateCard() {
     this._element = this._getCardData();
     this._setEventListeners();
-    this._element.querySelector(".photos-grid__photo").src = this._link;
-    this._element.querySelector(".photos-grid__photo").alt = this._text;
+    this._cardPhoto = this._element.querySelector(".photos-grid__photo");
+    this._cardPhoto.src = this._link;
+    this._cardPhoto.alt = this._text;
     this._element.querySelector(".photos-grid__location").textContent = this._text;
     return this._element;
   }
 
   // add event listeners
   _setEventListeners() {
-    this._element.querySelector(".heart").addEventListener("click", () => this._hundleLikeButton());
-    this._element.querySelector(".photos-grid__trash").addEventListener("click", () => this._hundleDeleteButton());
-    this._element.querySelector(".photos-grid__photo").addEventListener("click", () => this._handlePopupPicture());
+    this._element.querySelector(".heart").addEventListener("click", this._handleLikeButton);
+    this._element.querySelector(".photos-grid__trash").addEventListener("click", this._handleDeleteButton);
+    this._element.querySelector(".photos-grid__photo").addEventListener("click", this._handlePopupPicture);
   }
 
   // handle delete function
-  _hundleDeleteButton() {
+  _handleDeleteButton = () => {
     this._element.remove();
-  }
+    // remove the link to the DOM element:
+    this._element = null;
+  };
 
   // handle like function
-  _hundleLikeButton() {
+  _handleLikeButton = () => {
     this._element.querySelector(".heart").classList.toggle("heart_active");
-  }
+  };
 
   // handle popup picture modal function
-  _handlePopupPicture() {
-    const popupCard = document.querySelector(".picture-popup");
-    const popupCardPicture = popupCard.querySelector(".picture-popup__popup-image");
-    const popupCardText = popupCard.querySelector(".picture-popup__popup-text");
+  _handlePopupPicture = () => {
     popupCardPicture.src = this._link;
     popupCardPicture.alt = this._text;
     popupCardText.textContent = this._text;
     openPopup(popupCard);
-  }
+  };
 }

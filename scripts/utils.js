@@ -1,7 +1,7 @@
 // showing the modal pop-ups
 export const openPopup = (popup) => {
   popup.classList.add("popup_opened");
-  popup.addEventListener("click", closePopupByClickOverlay);
+  popup.addEventListener("mousedown", closePopupByClickOverlay);
   document.addEventListener("keydown", closePopupByEsc);
 };
 
