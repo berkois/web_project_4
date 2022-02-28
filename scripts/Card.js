@@ -2,17 +2,12 @@
 /*                               Card Generation                              */
 /* -------------------------------------------------------------------------- */
 
-import { openPopup } from "./utils.js";
-
-const popupCard = document.querySelector(".picture-popup");
-const popupCardPicture = popupCard.querySelector(".picture-popup__popup-image");
-const popupCardText = popupCard.querySelector(".picture-popup__popup-text");
-
-export class Card {
-  constructor(text, link, template) {
+export default class Card {
+  constructor(text, link, template, handleCardClick) {
     this._text = text;
     this._link = link;
-    this._template = template;
+    this._template = document.getElementById(template);
+    this._handleCardClick = handleCardClick;
   }
 
   // cloning new card from template and adding the info from input
@@ -35,7 +30,7 @@ export class Card {
   _setEventListeners() {
     this._element.querySelector(".heart").addEventListener("click", this._handleLikeButton);
     this._element.querySelector(".photos-grid__trash").addEventListener("click", this._handleDeleteButton);
-    this._element.querySelector(".photos-grid__photo").addEventListener("click", this._handlePopupPicture);
+    this._element.querySelector(".photos-grid__photo").addEventListener("click", this._handleCardClick);
   }
 
   // handle delete function
@@ -48,13 +43,5 @@ export class Card {
   // handle like function
   _handleLikeButton = () => {
     this._element.querySelector(".heart").classList.toggle("heart_active");
-  };
-
-  // handle popup picture modal function
-  _handlePopupPicture = () => {
-    popupCardPicture.src = this._link;
-    popupCardPicture.alt = this._text;
-    popupCardText.textContent = this._text;
-    openPopup(popupCard);
   };
 }

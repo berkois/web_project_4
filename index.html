@@ -40,11 +40,11 @@
           <h2 class="popup__header">Edit profile</h2>
           <form class="popup__form" name="edit" novalidate>
             <label class="popup__field">
-              <input type="text" class="popup__input popup__input_type_name" id="name-input" value="Name" name="profile-name" minlength="2" maxlength="40" required />
+              <input type="text" class="popup__input popup__input_type_name" id="name-input" value="Name" name="name" minlength="2" maxlength="40" required />
               <span class="popup__input-error name-input-error"></span>
             </label>
             <label class="popup__field">
-              <input type="text" class="popup__input popup__input_type_job" id="title-input" value="About me" name="profile-title" minlength="2" maxlength="200" required />
+              <input type="text" class="popup__input popup__input_type_job" id="title-input" value="About me" name="title" minlength="2" maxlength="200" required />
               <span class="popup__input-error title-input-error"></span>
             </label>
             <button type="submit" class="button popup__save-button" value="Save">Save</button>
@@ -57,11 +57,11 @@
           <h2 class="popup__header">New place</h2>
           <form class="popup__form" name="add-card" novalidate>
             <label class="popup__field">
-              <input type="text" class="popup__input popup__input_type_place" id="place-input" value="" placeholder="Title" name="place-title" minlength="1" maxlength="30" required />
+              <input type="text" class="popup__input popup__input_type_place" id="place-input" value="" placeholder="Title" name="place" minlength="1" maxlength="30" required />
               <span class="popup__input-error place-input-error"></span>
             </label>
             <label class="popup__field">
-              <input type="url" class="popup__input popup__input_type_img-src" id="url-input" value="" placeholder="Image link" name="image-source" required />
+              <input type="url" class="popup__input popup__input_type_img-src" id="url-input" value="" placeholder="Image link" name="source" required />
               <span class="popup__input-error url-input-error"></span>
             </label>
             <button type="submit" class="button popup__save-button" value="Create">Create</button>
@@ -78,7 +78,7 @@
     </div>
     <!-- <script src="./scripts/cards.js" defer></script>
     <script src="./scripts/validate.js" defer></script> -->
-    <script type="module" src="./scripts/index.js" defer></script>
+    <script type="module" src="./pages/index.js" defer></script>
     <template id="card-template">
       <li class="photos-grid__card">
         <img class="photos-grid__photo" src=" " alt=" " />
