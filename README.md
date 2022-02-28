@@ -11,6 +11,7 @@ The project is built using the following tools:
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 - [JavaScript](https://www.javascript.com)
+- [Webpack] (https://webpack.js.org/)
 - [Figma](https://www.figma.com/)
 
 ### Contact Me
