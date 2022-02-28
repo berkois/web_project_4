@@ -79,7 +79,10 @@ const openAddCardForm = () => {
   popupAddCardForm.open();
 };
 
+// event listeners for prompting profile-edit popup when clicking the edit icon
 editButton.addEventListener("click", openEditProfileForm);
+
+// event listeners for prompting add-card popup when clicking the add icon
 addCardButton.addEventListener("click", openAddCardForm);
 
 // enabling validation for add-card form
