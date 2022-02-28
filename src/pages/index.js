@@ -1,10 +1,16 @@
-import Card from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
-import Section from "../scripts/Section.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import UserInfo from "../scripts/UserInfo.js";
+import "./index.css";
+import profileAvatarSource from "../images/profile.png";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 import { initialCards, popupEditProfile, nameInput, jobInput, editButton, popupAddCard, formAddCard, addCardButton, popupCard, formConfig, currentName, currentJob } from "../utils/constants.js";
+
+// declaring the profile avatar image
+const profileAvatar = document.getElementById("profile-avatar");
+profileAvatar.src = profileAvatarSource;
 
 // setting up the popup for editing the profile
 const popupEditProfileForm = new PopupWithForm(popupEditProfile, (formValues) => {

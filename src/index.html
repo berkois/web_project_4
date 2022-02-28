@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Israel Berko" />
     <meta name="description" content="Submission for project number 4 in web developement course by Practicum Yandex" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <link rel="icon" href="./images/icon.ico" />
     <title>Around The U.S.</title>
   </head>
@@ -17,7 +17,7 @@
       </header>
       <main class="content">
         <section class="profile">
-          <img src="./images/profile.png" class="profile__avatar" alt="A profile photo of Jacques Cousteau" />
+          <img id="profile-avatar" class="profile__avatar" alt="A profile photo of Jacques Cousteau" />
           <div class="profile__info">
             <div class="profile__name-line">
               <h1 class="profile__name">Jacques Cousteau</h1>
@@ -76,9 +76,6 @@
         </div>
       </div>
     </div>
-    <!-- <script src="./scripts/cards.js" defer></script>
-    <script src="./scripts/validate.js" defer></script> -->
-    <script type="module" src="./pages/index.js" defer></script>
     <template id="card-template">
       <li class="photos-grid__card">
         <img class="photos-grid__photo" src=" " alt=" " />
