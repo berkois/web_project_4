@@ -38,13 +38,13 @@
         <div class="popup__container">
           <button class="popup__close-button button" type="button" aria-label="close-button"></button>
           <h2 class="popup__header">Edit profile</h2>
-          <form class="popup__form" name="edit" novalidate>
+          <form class="popup__form popup__form_type_edit-profile" name="edit" novalidate>
             <label class="popup__field">
-              <input type="text" class="popup__input popup__input_type_name" id="name-input" value="Name" name="name" minlength="2" maxlength="40" required />
+              <input type="text" class="popup__input popup__input_type_name" id="name-input" name="name" minlength="2" maxlength="40" required />
               <span class="popup__input-error name-input-error"></span>
             </label>
             <label class="popup__field">
-              <input type="text" class="popup__input popup__input_type_job" id="title-input" value="About me" name="title" minlength="2" maxlength="200" required />
+              <input type="text" class="popup__input popup__input_type_job" id="title-input" name="job" minlength="2" maxlength="200" required />
               <span class="popup__input-error title-input-error"></span>
             </label>
             <button type="submit" class="button popup__save-button" value="Save">Save</button>
@@ -55,13 +55,13 @@
         <div class="popup__container">
           <button class="popup__close-button button" type="button" aria-label="close-button"></button>
           <h2 class="popup__header">New place</h2>
-          <form class="popup__form" name="add-card" novalidate>
+          <form class="popup__form popup__form_type_add-card" name="add-card" novalidate>
             <label class="popup__field">
-              <input type="text" class="popup__input popup__input_type_place" id="place-input" value="" placeholder="Title" name="place" minlength="1" maxlength="30" required />
+              <input type="text" class="popup__input popup__input_type_place" id="place-input" value="" placeholder="Title" name="name" minlength="1" maxlength="30" required />
               <span class="popup__input-error place-input-error"></span>
             </label>
             <label class="popup__field">
-              <input type="url" class="popup__input popup__input_type_img-src" id="url-input" value="" placeholder="Image link" name="source" required />
+              <input type="url" class="popup__input popup__input_type_img-src" id="url-input" value="" placeholder="Image link" name="link" required />
               <span class="popup__input-error url-input-error"></span>
             </label>
             <button type="submit" class="button popup__save-button" value="Create">Create</button>

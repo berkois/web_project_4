@@ -26,20 +26,7 @@ export const initialCards = [
   },
 ];
 
-// edit-profile form constants
-export const popupEditProfile = document.querySelector(".popup_type_edit-profile");
-export const formEditProfile = popupEditProfile.querySelector(".popup__form");
-export const editButton = document.querySelector(".profile__edit-button");
-export const nameInput = formEditProfile.querySelector(".popup__input_type_name");
-export const jobInput = formEditProfile.querySelector(".popup__input_type_job");
-
-// add-card form constants
-export const popupAddCard = document.querySelector(".popup_type_add-card");
-export const formAddCard = popupAddCard.querySelector(".popup__form");
-export const addCardButton = document.querySelector(".profile__add-button");
-export const popupCard = document.querySelector(".picture-popup");
-export const currentName = document.querySelector(".profile__name");
-export const currentJob = document.querySelector(".profile__title");
+// default form selectors configuration, to be used by form-validator
 export const formConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",

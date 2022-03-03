@@ -5,7 +5,7 @@
 export default class FormValidator {
   constructor(config, form) {
     this._config = config;
-    this._form = form;
+    this._form = document.querySelector(form);
   }
 
   enableValidation() {
@@ -24,10 +24,10 @@ export default class FormValidator {
   // add the ability to reset the validation between sessions
   resetValidation() {
     this._inputList.forEach((inputElement) => {
-      inputElement.value = "";
       this._hideInputError(inputElement);
       this._toggleButtonState();
     });
+    this._form.reset();
   }
 
   // prompting error message with its style per form and input field

@@ -20,9 +20,10 @@ export default class Card {
     this._element = this._getCardData();
     this._setEventListeners();
     this._cardPhoto = this._element.querySelector(".photos-grid__photo");
+    this._cardCaption = this._element.querySelector(".photos-grid__location");
     this._cardPhoto.src = this._link;
     this._cardPhoto.alt = this._text;
-    this._element.querySelector(".photos-grid__location").textContent = this._text;
+    this._cardCaption.textContent = this._text;
     return this._element;
   }
 
