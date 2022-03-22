@@ -28,7 +28,7 @@ export default class Api {
 
   updateUserInfo(userData) {
     return this._customFetch(
-      `${this._baseUrl}/usrs/me`,
+      `${this._baseUrl}/users/me`,
       {
         method: "PATCH",
         headers: this._headers,
