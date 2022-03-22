@@ -19,7 +19,7 @@
         <section class="profile">
           <div id="profile-avatar" class="profile__avatar">
             <div class="profile__avatar-cover">
-              <img id="profile-avatar-edit" class="profile__avatar-edit" alt="Edit icon that covers the user's profile avatar" />
+              <img id="profile-avatar-edit" class="profile__avatar-edit" src=" " alt="Edit icon that covers the user's profile avatar" />
             </div>
           </div>
           <div class="profile__info">
@@ -61,8 +61,8 @@
           <h2 class="popup__header">Change profile picture</h2>
           <form class="popup__form popup__form_type_edit-avatar" name="edit-avatar" novalidate>
             <label class="popup__field">
-              <input type="url" class="popup__input popup__input_type_avatar-src" id="url-input" placeholder="Image link" name="avatar" required />
-              <span class="popup__input-error url-input-error"></span>
+              <input type="url" class="popup__input popup__input_type_avatar-src" id="avatar-avatar-url-input" placeholder="Image link" name="avatar" required />
+              <span class="popup__input-error avatar-url-input-error"></span>
             </label>
             <button type="submit" class="button popup__save-button" value="Save">Save</button>
           </form>
@@ -78,8 +78,8 @@
               <span class="popup__input-error place-input-error"></span>
             </label>
             <label class="popup__field">
-              <input type="url" class="popup__input popup__input_type_img-src" id="url-input" value="" placeholder="Image link" name="link" required />
-              <span class="popup__input-error url-input-error"></span>
+              <input type="url" class="popup__input popup__input_type_img-src" id="image-url-input" value="" placeholder="Image link" name="link" required />
+              <span class="popup__input-error image-url-input-error"></span>
             </label>
             <button type="submit" class="button popup__save-button" value="Create">Create</button>
           </form>
