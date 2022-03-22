@@ -18,6 +18,8 @@
 
 /* elements */
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__avatar-cover/profile__avatar-cover.css);
+@import url(../blocks/profile/__avatar-edit/profile__avatar-edit.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name-line/profile__name-line.css);
 @import url(../blocks/profile/__name/profile__name.css);
@@ -30,6 +32,9 @@
 @import url(../blocks/photos-grid/__trash/photos-grid__trash.css);
 @import url(../blocks/photos-grid/__label/photos-grid__label.css);
 @import url(../blocks/photos-grid/__location/photos-grid__location.css);
+@import url(../blocks/photos-grid/__like-wrapper/photos-grid__like-wrapper.css);
+@import url(../blocks/photos-grid/__like/photos-grid__like.css);
+@import url(../blocks/photos-grid/__like-counter/photos-grid__like-counter.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__header/popup__header.css);

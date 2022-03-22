@@ -9,3 +9,7 @@
   top: 18px;
   right: 15px;
 }
+
+.photos-grid__trash_disables {
+  display: none;
+}

@@ -1,8 +1,5 @@
 .heart {
   all: unset;
-  width: 21px;
-  height: 21px;
-  padding: 3px;
   background-image: url(../../images/heart.svg);
   background-repeat: no-repeat;
   background-position: center;

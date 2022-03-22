@@ -9,15 +9,15 @@ export default class UserInfo {
   getUserInfo() {
     const userData = {
       name: this._nameElement.textContent,
-      job: this._jobElement.textContent,
+      about: this._jobElement.textContent,
     };
     return userData;
   }
 
   setUserInfo(newUserData) {
     this._formNameInput.value = newUserData.name;
-    this._formJobInput.value = newUserData.job;
+    this._formJobInput.value = newUserData.about;
     this._nameElement.textContent = newUserData.name;
-    this._jobElement.textContent = newUserData.job;
+    this._jobElement.textContent = newUserData.about;
   }
 }
