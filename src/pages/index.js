@@ -61,11 +61,11 @@ popupEditProfileForm.setEventListeners();
 function handleEditProfileFormSubmit(formValues, submitButton) {
   api
     .updateUserInfo(formValues)
-    .then((res) => {
-      userProfile.setUserInfo(res);
+    .then(() => {
+      userProfile.setUserInfo(formValues);
       popupEditProfileForm.close();
     })
-    .finally((submitButton.textContent = "Save"));
+    .finally(() => (submitButton.textContent = "Save"));
 }
 
 // handle edit-profile form modal open
@@ -90,11 +90,11 @@ popupEditAvatarForm.setEventListeners();
 function handleAvatarFormSubmit(avatarUrl, submitButton) {
   api
     .setUserAvatar(avatarUrl)
-    .then((res) => {
-      userProfile.setUserAvatar(res.avatar);
+    .then(() => {
+      userProfile.setUserAvatar(avatarUrl);
       popupEditAvatarForm.close();
     })
-    .finally((submitButton.textContent = "Save"));
+    .finally(() => (submitButton.textContent = "Save"));
 }
 
 // handle edit-avatar form modal open
@@ -174,7 +174,7 @@ function handleAddCardFormSubmit(formValues, submitButton) {
       renderCard(res);
       popupAddCardForm.close();
     })
-    .finally((submitButton.textContent = "Create"));
+    .finally(() => (submitButton.textContent = "Create"));
 }
 
 // handle add-card form modal open
