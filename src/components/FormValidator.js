@@ -23,11 +23,10 @@ export default class FormValidator {
 
   // add the ability to reset the validation between sessions
   resetValidation() {
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
-      this._toggleButtonState();
     });
-    this._form.reset();
   }
 
   // prompting error message with its style per form and input field

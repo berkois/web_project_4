@@ -8,22 +8,16 @@ export const formConfig = {
   errorClass: "popup__input-error_active",
 };
 
-export const customFetch = (url, headers, errorFunction) =>
-  fetch(url, headers)
-    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-    .catch((err) => {
-      console.log(`error: status code ${err}.`);
-      errorFunction(`error: status code ${err}.`);
-    });
+export const customFetch = (url, headers) => fetch(url, headers).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
 
 export const popupErrorSelector = ".popup_type_error";
 export const profileNameSelector = ".profile__name";
 export const profileTitleSelector = ".profile__title";
 export const profileAvatarSelector = ".profile__avatar";
-export const nameInput = ".popup__input_type_name";
-export const jobInput = ".popup__input_type_job";
+export const nameInput = document.querySelector(".popup__input_type_name");
+export const jobInput = document.querySelector(".popup__input_type_job");
 export const avatarInput = "popup__input_type_avatar-src";
-export const profileAvatarEdit = document.getElementById("profile-avatar-edit");
+export const editAvatarIcon = document.getElementById("edit-avatar-icon");
 export const popupEditProfile = ".popup_type_edit-profile";
 export const formEditProfile = ".popup__form_type_edit-profile";
 export const editButton = document.querySelector(".profile__edit-button");

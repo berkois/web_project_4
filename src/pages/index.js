@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 
 import "./index.css";
-import profileAvatarEditSource from "../images/edit_icon.svg";
+import editAvatarIconSource from "../images/edit_icon.svg";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -13,11 +13,17 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import PopupWithMessage from "../components/PopupWithMessage.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
-import { formConfig, customFetch, popupErrorSelector, profileNameSelector, profileTitleSelector, profileAvatarSelector, nameInput, jobInput, avatarInput, profileAvatarEdit, popupEditProfile, formEditProfile, editButton, popupEditAvatar, formEditAvatar, avatarEditArea, popupCard, popupDeleteCardSelector, popupAddCard, addCardButton, formAddCard } from "../utils/constants.js";
+import { formConfig, customFetch, popupErrorSelector, profileNameSelector, profileTitleSelector, profileAvatarSelector, nameInput, jobInput, avatarInput, editAvatarIcon, popupEditProfile, formEditProfile, editButton, popupEditAvatar, formEditAvatar, avatarEditArea, popupCard, popupDeleteCardSelector, popupAddCard, addCardButton, formAddCard } from "../utils/constants.js";
 
 // setting up the popup for error message
 const popupError = new PopupWithMessage(popupErrorSelector);
 popupError.setEventListeners();
+
+const errorFunction = (err) => {
+  console.log(`error: ${err}`);
+  popupError.getMessage(".popup__text", `error: ${err}`);
+  popupError.open();
+};
 
 // setting up the API for current user
 const api = new Api(customFetch, {
@@ -26,52 +32,53 @@ const api = new Api(customFetch, {
     authorization: "3e63b17a-6497-4226-90cf-4d7937b7aba1",
     "Content-Type": "application/json",
   },
-  errorFunction: (errMessage) => {
-    popupError.getMessage(".popup__text", errMessage);
-    popupError.open();
-  },
 });
 
 /* -------------------------------------------------------------------------- */
 /*                               profile section                              */
 /* -------------------------------------------------------------------------- */
 
-// setting up the initial profile info
-profileAvatarEdit.src = profileAvatarEditSource;
+// setting up the edit icon image that appears when hovering the avatar
+editAvatarIcon.src = editAvatarIconSource;
 
-const userProfile = new UserInfo(profileNameSelector, profileTitleSelector, profileAvatarSelector, nameInput, jobInput, avatarInput);
+const userProfile = new UserInfo(profileNameSelector, profileTitleSelector, profileAvatarSelector);
 let userId;
 
 // loading the page at once: setting up profile info from the server and rendering the initial cards
-Promise.all([api.getUserInfo(), api.getInitialCards()]).then(([userInfo, initialCards]) => {
-  // setting up profile info from the server
-  userId = userInfo._id;
-  userProfile.setUserInfo(userInfo);
-  userProfile.setUserAvatar(userInfo.avatar);
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userInfo, initialCards]) => {
+    // setting up profile info from the server
+    userId = userInfo._id;
+    userProfile.setUserData(userInfo);
+    userProfile.setUserAvatar(userInfo.avatar);
 
-  // rendering the initial cards
-  cardsList.renderer(initialCards);
-});
+    // rendering the initial cards
+    cardsList.renderer(initialCards);
+  })
+  .catch((err) => errorFunction(err));
 
 // setting up the popup-form for editing the profile
-const popupEditProfileForm = new PopupWithForm(popupEditProfile, handleEditProfileFormSubmit);
+const popupEditProfileForm = new PopupWithForm(popupEditProfile, formConfig, handleEditProfileFormSubmit);
 popupEditProfileForm.setEventListeners();
 
 // declare the fuction for handling submit for editing avatar form
 function handleEditProfileFormSubmit(formValues, submitButton) {
   api
     .updateUserInfo(formValues)
-    .then(() => {
-      userProfile.setUserInfo(formValues);
-      popupEditProfileForm.close();
+    .then((res) => {
+      userProfile.setUserData(res);
     })
+    .then(() => popupEditProfileForm.close())
+    .catch((err) => errorFunction(err))
     .finally(() => (submitButton.textContent = "Save"));
 }
 
 // handle edit-profile form modal open
 const openEditProfileForm = () => {
   editProfileFormValidator.resetValidation();
-  userProfile.setUserInfo(userProfile.getUserInfo());
+  const userData = userProfile.getUserData();
+  nameInput.value = userData.name;
+  jobInput.value = userData.about;
   popupEditProfileForm.open();
 };
 
@@ -83,7 +90,7 @@ editProfileFormValidator.enableValidation();
 editButton.addEventListener("click", openEditProfileForm);
 
 // setting up the popup-form for editing the avatar
-const popupEditAvatarForm = new PopupWithForm(popupEditAvatar, handleAvatarFormSubmit);
+const popupEditAvatarForm = new PopupWithForm(popupEditAvatar, formConfig, handleAvatarFormSubmit);
 popupEditAvatarForm.setEventListeners();
 
 // declare the fuction for handling submit for editing avatar form
@@ -92,8 +99,9 @@ function handleAvatarFormSubmit(avatarUrl, submitButton) {
     .setUserAvatar(avatarUrl)
     .then((res) => {
       userProfile.setUserAvatar(res.avatar);
-      popupEditAvatarForm.close();
     })
+    .then(() => popupEditAvatarForm.close())
+    .catch((err) => errorFunction(err))
     .finally(() => (submitButton.textContent = "Save"));
 }
 
@@ -136,22 +144,31 @@ const renderCard = (cardItem) => {
     (cardId) => {
       popupDeleteCard.open();
       // function to be performed when approving the popup for deleting the new card:
-      popupDeleteCard.getTask(() => {
-        api.deleteCard(cardId);
-        placeCard.deleteCard();
+      popupDeleteCard.setSubmitHandler(() => {
+        api
+          .deleteCard(cardId)
+          .then(() => placeCard.deleteCardElement())
+          .then(() => popupDeleteCard.close())
+          .catch((err) => errorFunction(err));
       });
     },
     // function to be performed when clicking on the like icon of the new card:
     (cardId) => {
       const isLiked = placeCard.isCardLiked();
       if (isLiked) {
-        api.removeLike(cardId).then((res) => {
-          placeCard.removeLike(res);
-        });
+        api
+          .removeLike(cardId)
+          .then((res) => {
+            placeCard.updateLikes(res);
+          })
+          .catch((err) => errorFunction(err));
       } else {
-        api.addLike(cardId).then((res) => {
-          placeCard.likeCard(res);
-        });
+        api
+          .addLike(cardId)
+          .then((res) => {
+            placeCard.updateLikes(res);
+          })
+          .catch((err) => errorFunction(err));
       }
     }
   );
@@ -163,7 +180,7 @@ const renderCard = (cardItem) => {
 const cardsList = new Section(renderCard, ".photos-grid__list");
 
 // setting up the popup-form for rendering new cards
-const popupAddCardForm = new PopupWithForm(popupAddCard, handleAddCardFormSubmit);
+const popupAddCardForm = new PopupWithForm(popupAddCard, formConfig, handleAddCardFormSubmit);
 popupAddCardForm.setEventListeners();
 
 // declare the fuction for handling submit for adding card form
@@ -172,8 +189,9 @@ function handleAddCardFormSubmit(formValues, submitButton) {
     .setNewCard(formValues)
     .then((res) => {
       renderCard(res);
-      popupAddCardForm.close();
     })
+    .then(() => popupAddCardForm.close())
+    .catch((err) => errorFunction(err))
     .finally(() => (submitButton.textContent = "Create"));
 }
 

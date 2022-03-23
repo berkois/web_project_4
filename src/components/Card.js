@@ -34,6 +34,7 @@ export default class Card {
     this._cardCaption = this._element.querySelector(".photos-grid__location");
     this._likesCounter = this._element.querySelector(".photos-grid__like-counter");
     this._trashIcon = this._element.querySelector(".photos-grid__trash");
+    this._likeButton = this._element.querySelector(".heart");
     this._likesCounter.textContent = this._likesCount;
     this._cardPhoto.src = this._link;
     this._cardPhoto.alt = this._text;
@@ -42,37 +43,30 @@ export default class Card {
       this._trashIcon.classList.add("photos-grid__trash_disables");
     }
     if (this.isCardLiked()) {
-      this._element.querySelector(".heart").classList.add("heart_active");
+      this._likeButton.classList.add("heart_active");
     }
     this._setEventListeners();
     return this._element;
   }
 
+  // add event listeners
+  _setEventListeners() {
+    this._likeButton.addEventListener("click", () => this._handleLikeButton(this._id));
+    this._trashIcon.addEventListener("click", () => this._handleDeleteCard(this._id));
+    this._cardPhoto.addEventListener("click", this._handleCardClick);
+  }
+
   // handle delete function
-  deleteCard() {
+  deleteCardElement() {
     this._element.remove();
     // remove the link to the DOM element:
     this._element = null;
   }
 
-  // add event listeners
-  _setEventListeners() {
-    this._element.querySelector(".heart").addEventListener("click", () => this._handleLikeButton(this._id));
-    this._element.querySelector(".photos-grid__trash").addEventListener("click", () => this._handleDeleteCard(this._id));
-    this._element.querySelector(".photos-grid__photo").addEventListener("click", this._handleCardClick);
-  }
-
   // mark like icon and update like counter
-  likeCard = (data) => {
+  updateLikes = (data) => {
     this._likes = data.likes;
-    this._element.querySelector(".heart").classList.add("heart_active");
-    this._likesCounter.textContent = data.likes.length;
-  };
-
-  // remove like icon and update like counter
-  removeLike = (data) => {
-    this._likes = data.likes;
-    this._element.querySelector(".heart").classList.remove("heart_active");
+    this._likeButton.classList.toggle("heart_active");
     this._likesCounter.textContent = data.likes.length;
   };
 }
