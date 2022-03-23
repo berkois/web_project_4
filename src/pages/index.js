@@ -90,8 +90,8 @@ popupEditAvatarForm.setEventListeners();
 function handleAvatarFormSubmit(avatarUrl, submitButton) {
   api
     .setUserAvatar(avatarUrl)
-    .then(() => {
-      userProfile.setUserAvatar(avatarUrl);
+    .then((res) => {
+      userProfile.setUserAvatar(res.avatar);
       popupEditAvatarForm.close();
     })
     .finally(() => (submitButton.textContent = "Save"));
